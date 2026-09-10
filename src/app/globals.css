@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  border-color: theme("colors.line");
+}@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  border-color: theme("colors.line");
+}
+
+body {
+  font-feature-settings: "ss01" on, "cv01" on;
+  background-color: theme("colors.paper");
+  background-image:
+    radial-gradient(circle 380px at 8% 6%, rgba(15, 157, 109, 0.07), transparent 70%),
+    radial-gradient(circle 460px at 96% 14%, rgba(224, 168, 62, 0.08), transparent 70%),
+    radial-gradient(circle 420px at 12% 92%, rgba(224, 168, 62, 0.06), transparent 70%),
+    radial-gradient(circle 500px at 92% 88%, rgba(15, 157, 109, 0.06), transparent 70%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.ledger-row {
+  @apply flex items-center justify-between py-4;
+  border-bottom: 1px solid theme("colors.line");
+}
+.ledger-row:last-child {
+  border-bottom: none;
+}
+
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.card {
+  @apply bg-panel rounded-lg shadow-card border border-line;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-md bg-pine px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-pine-600 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-md border border-line bg-panel px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-pine-50;
+}
+
+.btn-danger {
+  @apply inline-flex items-center justify-center rounded-md border border-clay/30 bg-panel px-4 py-2.5 text-sm font-medium text-clay transition-colors hover:bg-red-50;
+}
+
+.input {
+  @apply w-full rounded-md border border-line bg-panel px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-pine/30 focus:border-pine;
+}
+
+.label {
+  @apply mb-1.5 block text-sm font-medium text-ink;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-sm px-2 py-0.5 text-xs font-medium capitalize;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.14em] text-pine-400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  font-feature-settings: "ss01" on, "cv01" on;
+  background-image:
+    radial-gradient(circle 380px at 8% 6%, rgba(15, 157, 109, 0.07), transparent 70%),
+    radial-gradient(circle 460px at 96% 14%, rgba(224, 168, 62, 0.08), transparent 70%),
+    radial-gradient(circle 420px at 12% 92%, rgba(224, 168, 62, 0.06), transparent 70%),
+    radial-gradient(circle 500px at 92% 88%, rgba(15, 157, 109, 0.06), transparent 70%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.ledger-row {
+  @apply flex items-center justify-between py-4;
+  border-bottom: 1px solid theme("colors.line");
+}
+.ledger-row:last-child {
+  border-bottom: none;
+}
+
+.tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.card {
+  @apply bg-panel rounded-lg shadow-card border border-line;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-md bg-pine px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-pine-600 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-md border border-line bg-panel px-4 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-pine-50;
+}
+
+.btn-danger {
+  @apply inline-flex items-center justify-center rounded-md border border-clay/30 bg-panel px-4 py-2.5 text-sm font-medium text-clay transition-colors hover:bg-red-50;
+}
+
+.input {
+  @apply w-full rounded-md border border-line bg-panel px-3.5 py-2.5 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-pine/30 focus:border-pine;
+}
+
+.label {
+  @apply mb-1.5 block text-sm font-medium text-ink;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-sm px-2 py-0.5 text-xs font-medium capitalize;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.14em] text-pine-400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
