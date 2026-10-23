@@ -3,6 +3,7 @@
 import { Suspense, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { Eye, EyeOff } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 export default function SignupPage() {
@@ -10,6 +11,46 @@ export default function SignupPage() {
     <Suspense fallback={null}>
       <SignupForm />
     </Suspense>
+  );
+}
+
+// Password box with an eye button to show/hide the password
+function PasswordField({
+  id,
+  value,
+  onChange,
+  placeholder,
+  minLength,
+}: {
+  id: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  minLength?: number;
+}) {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <div className="relative">
+      <input
+        id={id}
+        type={visible ? "text" : "password"}
+        className="input pr-12"
+        required
+        minLength={minLength}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+      />
+      <button
+        type="button"
+        onClick={() => setVisible((v) => !v)}
+        aria-label={visible ? "Hide password" : "Show password"}
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink transition-colors"
+      >
+        {visible ? <EyeOff size={20} /> : <Eye size={20} />}
+      </button>
+    </div>
   );
 }
 
@@ -92,8 +133,13 @@ function SignupForm() {
         </div>
         <div>
           <label className="label" htmlFor="password">Password</label>
-          <input id="password" type="password" className="input" required minLength={8} value={password}
-            onChange={(e) => setPassword(e.target.value)} placeholder="At least 8 characters" />
+          <PasswordField
+            id="password"
+            value={password}
+            onChange={setPassword}
+            placeholder="At least 8 characters"
+            minLength={8}
+          />
         </div>
         <div>
           <label className="label" htmlFor="referralCode">Referral code <span className="text-muted font-normal">(optional)</span></label>
