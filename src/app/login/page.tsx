@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
-import { Bell, MapPin, Phone, ShieldAlert } from "lucide-react";
+import { Bell, MapPin, Phone, ShieldAlert, Eye, EyeOff } from "lucide-react";
 
 type RememberedUser = { name: string; email: string; lastSignIn: string };
 
@@ -15,6 +15,43 @@ function formatTimestamp(iso: string) {
   const time = d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
   const date = d.toLocaleDateString("en-GB", { day: "2-digit", month: "2-digit", year: "2-digit" });
   return `${time} | ${date}`;
+}
+
+// Password box with an eye button to show/hide the password
+function PasswordField({
+  value,
+  onChange,
+  placeholder,
+  autoFocus,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  autoFocus?: boolean;
+}) {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <div className="relative">
+      <input
+        type={visible ? "text" : "password"}
+        className="input pr-12"
+        required
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        autoFocus={autoFocus}
+      />
+      <button
+        type="button"
+        onClick={() => setVisible((v) => !v)}
+        aria-label={visible ? "Hide password" : "Show password"}
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-ink transition-colors"
+      >
+        {visible ? <EyeOff size={20} /> : <Eye size={20} />}
+      </button>
+    </div>
+  );
 }
 
 export default function LoginPage() {
@@ -103,8 +140,9 @@ export default function LoginPage() {
           <div className="rounded-md bg-white p-3">
             <img src={qrSrc} alt="QR code linking to the GringoAfi signup page" width={200} height={200} className="rounded-sm" />
           </div>
-          
-          <a  href={signupUrl}
+
+          <a
+            href={signupUrl}
             className="mt-3 flex items-center justify-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:bg-gold-600 transition-colors"
           >
             Open on this device
@@ -120,13 +158,10 @@ export default function LoginPage() {
               Last signed in: <span className="font-medium text-ink">{formatTimestamp(remembered.lastSignIn)}</span>
             </p>
             <form onSubmit={handleSubmit} className="space-y-3">
-              <input
-                type="password"
-                className="input"
-                required
-                placeholder="Enter your password"
+              <PasswordField
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={setPassword}
+                placeholder="Enter your password"
                 autoFocus
               />
               {error && <p className="text-sm text-clay text-center">{error}</p>}
@@ -149,13 +184,10 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               autoFocus
             />
-            <input
-              type="password"
-              className="input"
-              required
-              placeholder="Password"
+            <PasswordField
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={setPassword}
+              placeholder="Password"
             />
             {error && <p className="text-sm text-clay text-center">{error}</p>}
             <button type="submit" disabled={loading} className="btn-primary w-full py-3.5 text-base rounded-full">
