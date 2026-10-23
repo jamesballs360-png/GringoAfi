@@ -150,8 +150,7 @@ export default function AdminUsersPage() {
                     <td className="p-4 font-medium">
                       <Link href={`/admin/users/${u.id}`} className="hover:text-pine-600 transition-colors flex items-center gap-1.5">
                         {u.full_name}
-                        {flagged && <AlertTriangle size={13} className="text-gold-600" titleAccess="Withdrawn more than deposited" />}
-                      </Link>
+{flagged && <span title="Withdrawn more than deposited"><AlertTriangle size={13} className="text-gold-600" /></span>}                      </Link>
                     </td>
                     <td className="p-4 text-muted">{u.email}<br />{u.phone}</td>
                     <td className="p-4">
