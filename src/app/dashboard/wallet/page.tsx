@@ -24,6 +24,10 @@ import {
   Check,
 } from "lucide-react";
 
+// Allowed range for every deposit and withdrawal (also enforced in the database)
+const MIN_AMOUNT = 100;
+const MAX_AMOUNT = 10000;
+
 export default function WalletPage() {
   const supabase = createClient();
   const [tab, setTab] = useState<"deposit" | "withdraw">("deposit");
@@ -213,8 +217,9 @@ export default function WalletPage() {
 
                 <div>
                   <label className="label" htmlFor="dep-amount">Amount</label>
-                  <input id="dep-amount" type="number" step="0.01" min="1" className="input tabular" required
+                  <input id="dep-amount" type="number" step="0.01" min={MIN_AMOUNT} max={MAX_AMOUNT} className="input tabular" required
                     value={amount} onChange={(e) => setAmount(e.target.value)} />
+                  <p className="text-xs text-muted mt-1.5">Minimum {formatMoney(MIN_AMOUNT)} · Maximum {formatMoney(MAX_AMOUNT)} per deposit.</p>
                 </div>
                 <div>
                   <label className="label">Your payment reference</label>
@@ -273,8 +278,9 @@ export default function WalletPage() {
                 <p className="text-sm text-muted">Funds are held from your balance immediately and released to your payout method once approved.</p>
                 <div>
                   <label className="label" htmlFor="wd-amount">Amount</label>
-                  <input id="wd-amount" type="number" step="0.01" min="1" max={balance} className="input tabular" required
+                  <input id="wd-amount" type="number" step="0.01" min={MIN_AMOUNT} max={Math.min(balance, MAX_AMOUNT)} className="input tabular" required
                     value={amount} onChange={(e) => setAmount(e.target.value)} />
+                  <p className="text-xs text-muted mt-1.5">Minimum {formatMoney(MIN_AMOUNT)} · Maximum {formatMoney(MAX_AMOUNT)} per withdrawal.</p>
                 </div>
                 <div>
                   <label className="label" htmlFor="wd-method">Payout method</label>

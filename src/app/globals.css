@@ -177,3 +177,22 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+/* ---- Responsive safety net (applies to every page) ---- */
+
+/* Rows wrap instead of overflowing when content is wide (admin buttons, long values) */
+.ledger-row {
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+}
+
+/* Page padding was 32px on every side, which wastes a lot of a phone screen */
+@media (max-width: 767px) {
+  main.p-8 {
+    padding: 1.25rem;
+  }
+}
+
+html {
+  overflow-x: hidden;
+}

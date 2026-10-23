@@ -29,7 +29,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         title={profile?.full_name ?? "Investor"}
         avatarChoice={profile?.avatar_choice}
       />
-      <div className="flex-1 pt-14 md:pt-0">{children}</div>
+     <div className="flex-1 min-w-0 pt-14 md:pt-0">{children}</div>
     </div>
   );
 }

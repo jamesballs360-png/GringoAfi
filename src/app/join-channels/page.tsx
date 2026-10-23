@@ -6,7 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 
 // TODO: replace with your real links (same ones used in FloatingWidget.tsx)
 const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/YOUR-CHANNEL-ID";
-const TELEGRAM_GROUP_URL = "https://t.me/YOUR-GROUP-NAME";
+const TELEGRAM_GROUP_URL = "https://t.me/+8A7lWnAwOtdkYmI0";
 
 export default function JoinChannelsPage() {
   const router = useRouter();

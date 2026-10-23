@@ -21,8 +21,8 @@ export default function LandingPage() {
       <header className="border-b border-line">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <span className="font-display text-xl font-semibold tracking-tight">GringoAfi</span>
-          <nav className="flex items-center gap-3">
-            <Link href="/about" className="text-sm font-medium text-muted hover:text-ink px-2">About</Link>
+         <nav className="flex items-center gap-2 sm:gap-3">
+           <Link href="/about" className="hidden sm:inline text-sm font-medium text-muted hover:text-ink px-2">About</Link>
             <Link href="/login" className="btn-secondary">Log in</Link>
             <Link href="/signup" className="btn-primary">Open an account</Link>
           </nav>
@@ -36,7 +36,7 @@ export default function LandingPage() {
             <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium text-gold-100 mb-6">
               Structured ROI plans, backed by a full ledger
             </span>
-            <h1 className="font-display text-5xl leading-[1.05] font-medium text-white">
+            <h1 className="font-display text-4xl sm:text-5xl leading-[1.05] font-medium text-white">
               Every cedi,<br />
               <span className="text-gold-100 underline decoration-gold-400 decoration-2 underline-offset-4">accounted for.</span>
             </h1>
@@ -45,11 +45,11 @@ export default function LandingPage() {
               No jargon, no guesswork — just an entry in the ledger for every deposit,
               payout, and referral you earn.
             </p>
-            <div className="mt-8 flex gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/signup" className="btn-primary px-6 py-3 text-base">Start investing →</Link>
               <Link href="#plans" className="inline-flex items-center justify-center rounded-md border border-white/25 bg-white/5 px-6 py-3 text-base font-medium text-white hover:bg-white/10 transition-colors">See plans</Link>
             </div>
-            <div className="mt-10 flex items-center gap-6 text-xs text-white/50">
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/50">
               <span>3 investment plans</span>
               <span className="w-1 h-1 rounded-full bg-white/30" />
               <span>Multi-level referrals</span>
@@ -134,8 +134,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="border-t border-line">
-        <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-muted flex justify-between">
-          <span>© {new Date().getFullYear()} GringoAfi</span>
+<div className="mx-auto max-w-6xl px-6 py-8 text-sm text-muted flex flex-col sm:flex-row gap-2 justify-between">          <span>© {new Date().getFullYear()} GringoAfi</span>
           <span>Investing carries risk. Read the terms before you fund your wallet.</span>
         </div>
       </footer>

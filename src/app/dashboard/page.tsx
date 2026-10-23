@@ -1,10 +1,9 @@
-
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { formatMoney, formatDate } from "@/lib/utils";
 import StatCard from "@/components/StatCard";
 import Badge from "@/components/Badge";
-import LiveActivityTicker from "@/components/LiveActivityTicker";
+import WithdrawalTicker from "@/components/WithdrawalTicker";
 import Button from "@/components/ui/Button";
 import EmptyState from "@/components/ui/EmptyState";
 import {
@@ -41,7 +40,7 @@ export default async function DashboardOverview() {
 
   return (
     <>
-      <LiveActivityTicker />
+      <WithdrawalTicker />
       <main className="p-6 md:p-8 max-w-5xl">
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -68,7 +67,7 @@ export default async function DashboardOverview() {
           </Link>
         )}
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+       <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 mb-8">
           <StatCard icon={Wallet} label="Wallet balance" value={formatMoney(Number(wallet?.balance ?? 0))} />
           <StatCard icon={TrendingUp} label="Active investments" value={formatMoney(activeInvested)} />
           <StatCard icon={PiggyBank} label="Daily income" value={formatMoney(dailyIncome)} tone="text-pine-600" />

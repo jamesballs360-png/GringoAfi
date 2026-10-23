@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 // TODO: replace these two with your real links
-const TELEGRAM_GROUP_URL = "https://t.me/YOUR-GROUP-NAME";
+const TELEGRAM_GROUP_URL = "https://t.me/+8A7lWnAwOtdkYmI0";
 
 export default function FloatingWidget() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -22,12 +22,12 @@ export default function FloatingWidget() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-3">
       {showScrollTop && (
         <button
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="w-12 h-12 rounded-full bg-pine text-white shadow-card flex items-center justify-center hover:bg-pine-600 transition-colors"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-pine text-white shadow-card flex items-center justify-center hover:bg-pine-600 transition-colors"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 19V5M5 12l7-7 7 7" />
@@ -56,12 +56,12 @@ export default function FloatingWidget() {
         </svg>
       </a>
 
-      <div className="absolute right-14 bottom-16 rotate-[-8deg] bg-gold text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-card whitespace-nowrap pointer-events-none">
+      <div className="hidden sm:block absolute right-14 bottom-16 rotate-[-8deg] bg-gold text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow-card whitespace-nowrap pointer-events-none">
         We're here
       </div>
 
       {chatOpen && (
-        <div className="absolute bottom-16 right-14 w-72 card p-4">
+        <div className="absolute bottom-16 right-12 sm:right-14 w-64 sm:w-72 max-w-[calc(100vw-4rem)] card p-4">
           <div className="flex items-center justify-between mb-2">
             <p className="font-display text-sm font-semibold">Chat with us</p>
             <button onClick={() => setChatOpen(false)} aria-label="Close chat" className="text-muted hover:text-ink">✕</button>
